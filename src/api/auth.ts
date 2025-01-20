@@ -4,9 +4,15 @@ import {axiosInstance} from "../config/axios";
 
 /**@Funcion para Iniciar Sesion */
 export const loginRequest = async (email: string, password: string) => {
-	const { data } = await axiosInstance.post('/auth/signIn', { email, password });
-	console.log(data);
-	return data
+    try {
+        const { data } = await axiosInstance.post(
+            '/auth/signIn', { email, password }
+        );
+        return data 
+    } catch (error) {
+        console.log("Error en la funcion LoginUser:", error);
+    }
+	
 }
 
 /**@Funcion para Registrar un Usuario */
